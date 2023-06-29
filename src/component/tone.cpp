@@ -3,18 +3,15 @@
 #include "settings.h"
 #include "internal/tone.h"
 
-Sounds::Tone& Sounds::Tone::set_volume(uint16_t volume) {
+void Sounds::Tone::set_volume(uint16_t volume) {
   m_amplitude = volume;
   m_ax = volume;
   m_an = 1;
-  return *this;
 }
 
-Sounds::Tone& Sounds::Tone::gate(float percent) {
+void Sounds::Tone::gate(float percent) {
   m_gate_percent = percent;
   should_gate = true;
-
-  return *this;
 }
 
 int16_t Sounds::Tone::get_sample() {
@@ -72,13 +69,11 @@ int16_t Sounds::Tone::get_sample() {
   return static_cast<int16_t>(sample);
 }
 
-Sounds::Tone& Sounds::Tone::set_slide_function(double fx) {
+void Sounds::Tone::set_slide_function(double fx) {
   m_fx = fx;
   //m_fn = fn;
-  return *this;
 }
 
-Sounds::Tone& Sounds::Tone::set_phase(double phase_rad) {
+void Sounds::Tone::set_phase(double phase_rad) {
   m_phase_abs = phase_rad;
-  return *this;
 }

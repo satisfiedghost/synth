@@ -21,10 +21,10 @@ public:
     , m_phase_abs(0)
     {}
 
-  Tone& set_volume(uint16_t volume);
-  Tone& gate(float percent);
-  Tone& set_slide_function(double fx);
-  Tone& set_phase(double phase_rad);
+  void set_volume(uint16_t volume);
+  void gate(float percent);
+  void set_slide_function(double fx);
+  void set_phase(double phase_rad);
 
   // get a sample from the tone
   // increments an internal counter per the global sample rate

@@ -16,25 +16,12 @@ int main() {
     //f.add_note(n, i);
   //}
   auto n = Sounds::Note(D3, 3).set_volume(5000);
-  f.add_note(n, 1);
-  n = Sounds::Note(D4, 3).set_volume(4000).set_phase(90);
-  f.add_note(n, 1);
-  n = Sounds::Note(D5, 3).set_volume(3000).set_phase(90);
-  f.add_note(n, 1);
+  f.add_note(n, 0);
+  n = Sounds::Note(D3 * 2, 3).set_volume(3000);
+  f.add_note(n, 0);
+  n = Sounds::Note(D3 * 3, 3).set_volume(1000);
+  f.add_note(n, 0);
 
-  n = Sounds::Note(D3, 3).set_volume(5000);
-  f.add_note(n, 5);
-  n = Sounds::Note(D4, 3).set_volume(4000);
-  f.add_note(n, 5);
-  n = Sounds::Note(D5, 3).set_volume(3000).set_phase(90);
-  f.add_note(n, 5);
-
-  n = Sounds::Note(D3, 3).set_volume(5000);
-  f.add_note(n, 9);
-  n = Sounds::Note(D4, 3).set_volume(4000);
-  f.add_note(n, 9);
-  n = Sounds::Note(D5, 3).set_volume(3000).set_phase(90);
-  f.add_note(n, 9);
 
   f.write_file();
 
