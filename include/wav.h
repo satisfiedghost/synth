@@ -2,7 +2,7 @@
 #include <array>
 #include <vector>
 #include "settings.h"
-#include "sounds.h"
+#include "note.h"
 #include <iostream>
 
 typedef struct wav_headers {
@@ -48,7 +48,7 @@ typedef struct wav_headers {
       return get_num_samples() / Settings::NumChannels;
     }
 
-} wav_headers __attribute__((packed));
+} __attribute__((packed)) wav_headers;
 
 class WAV_File {
 public:

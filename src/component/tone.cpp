@@ -26,7 +26,7 @@ int16_t Sounds::Tone::get_sample() {
 
   double sample_value = std::sin(2 * M_PI * curr_freq *
                                 static_cast<double>(m_current_step) * Settings::STEP + 
-                                m_phase_rel);
+                                m_phase_rel + m_phase_abs);
 
   double sample = sample_amplitude * sample_value;
 
@@ -75,5 +75,10 @@ int16_t Sounds::Tone::get_sample() {
 Sounds::Tone& Sounds::Tone::set_slide_function(double fx) {
   m_fx = fx;
   //m_fn = fn;
+  return *this;
+}
+
+Sounds::Tone& Sounds::Tone::set_phase(double phase_rad) {
+  m_phase_abs = phase_rad;
   return *this;
 }

@@ -18,11 +18,13 @@ public:
     , should_gate(false)
     , m_current_step(0)
     , m_phase_rel(0)
+    , m_phase_abs(0)
     {}
 
   Tone& set_volume(uint16_t volume);
   Tone& gate(float percent);
   Tone& set_slide_function(double fx);
+  Tone& set_phase(double phase_rad);
 
   // get a sample from the tone
   // increments an internal counter per the global sample rate
@@ -62,7 +64,7 @@ private:
   // for sample calculation
   size_t m_current_step;
 
-  // TODO phase
   double m_phase_rel;
+  double m_phase_abs;
 };
 } // Sounds

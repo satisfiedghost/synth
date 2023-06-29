@@ -1,5 +1,5 @@
-#include <sounds.h>
 #include <cmath>
+#include "note.h"
 #include "settings.h"
 
 
@@ -19,5 +19,12 @@ Sounds::Note& Sounds::Note::slide(uint32_t frequency_to) {
 
 Sounds::Note& Sounds::Note::set_volume(uint16_t volume) {
   m_tone.set_volume(volume);
+  return *this;
+}
+
+Sounds::Note& Sounds::Note::set_phase(double phase_deg) {
+  double phase_rad = (phase_deg * M_PI) / 180.;
+  m_tone.set_phase(phase_rad);
+
   return *this;
 }
