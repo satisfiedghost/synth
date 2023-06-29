@@ -1,6 +1,7 @@
-#include <sounds.h>
 #include <cmath>
+
 #include "settings.h"
+#include "internal/tone.h"
 
 Sounds::Tone& Sounds::Tone::set_volume(uint16_t volume) {
   m_amplitude = volume;
@@ -74,25 +75,5 @@ int16_t Sounds::Tone::get_sample() {
 Sounds::Tone& Sounds::Tone::set_slide_function(double fx) {
   m_fx = fx;
   //m_fn = fn;
-  return *this;
-}
-
-
-Sounds::Note& Sounds::Note::slide(uint32_t frequency_to) {
-  // Calculate the fx and fn factors, given the initial frequency and a final frequency
-  // Only supports linear for now
-
-  // TODO handle case where "to" is the same
-  int32_t freq_diff = static_cast<int32_t>(frequency_to) - static_cast<int32_t>(m_tone.m_fundamental);
-
-  // m = (y2 - y1) / (x2 - x1)
-  double m = static_cast<double>(freq_diff) / m_length_s;
-  m_tone.set_slide_function(m); // linear only
-
-  return *this;
-}
-
-Sounds::Note& Sounds::Note::set_volume(uint16_t volume) {
-  m_tone.set_volume(volume);
   return *this;
 }
