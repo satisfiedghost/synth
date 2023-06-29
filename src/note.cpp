@@ -28,3 +28,9 @@ Sounds::Note& Sounds::Note::set_phase(double phase_deg) {
 
   return *this;
 }
+
+Sounds::Note& Sounds::Note::gate(double gate_percent) {
+  m_tone.gate(gate_percent);
+
+  return *this;
+}
