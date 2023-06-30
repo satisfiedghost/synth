@@ -18,7 +18,6 @@ int16_t Sounds::Tone::get_sample() {
   // calculate the actual sample value for the tone
   double sample_amplitude = m_amplitude;
 
-
   double curr_freq = m_fundamental + (static_cast<double>(m_current_step) * m_fx * Settings::STEP);
 
   double sample_value = std::sin(2 * M_PI * curr_freq *

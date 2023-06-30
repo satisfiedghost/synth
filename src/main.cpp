@@ -12,12 +12,17 @@ int main() {
   WAV_File f(20);
 
   // fair warning, this will probably distort speakers heavily until some smoothing is implemented
-  //for (float i = 0; i < 10; i+= 1) {
-    //auto n = Sounds::Note(D3, 10 - i).set_volume(5000).slide(B0);
-    //f.add_note(n, i);
-  //}
-  auto n = Sounds::Note(D3, 3).set_volume(5000).gate(0.9).noise(0.03);
-  f.add_note(n, 0);
+  bool left = true;
+  for (float i = 0; i < 20; i+= 0.15) {
+    auto n = Sounds::Note(D3, 20 - i).set_volume(2000).slide(B0);
+    if (left) {
+      left = false;
+      f.add_note(n, i, Channel::LEFT);
+    } else {
+      left = true;
+      f.add_note(n, i, Channel::RIGHT);
+    }
+  }
 
   f.write_file();
 
