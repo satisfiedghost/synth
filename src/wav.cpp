@@ -16,7 +16,6 @@ void WAV_File::write_file() const {
 }
 
 // TODO support time (full length for now)
-// TODO support channels (mono for now)
 void WAV_File::add_tone(Sounds::Tone& tone) {
   size_t samples_needed = m_time_s * Settings::SampleRate;
 
@@ -30,7 +29,7 @@ void WAV_File::add_tone(Sounds::Tone& tone) {
   }
 }
 
-void WAV_File::add_note(Sounds::Note& note, float start_time_s) {
+void WAV_File::add_note(Sounds::Note& note, float start_time_s, Channel ch) {
   size_t samples_needed = note.get_length_s() * Settings::SampleRate;
 
   // TODO - maybe make tone sampling const?
@@ -41,8 +40,20 @@ void WAV_File::add_note(Sounds::Note& note, float start_time_s) {
 
   for (size_t i = 0; i < samples_needed; i++) {
     auto sample = note.get_sample();
-    for (size_t j = 0; j < Settings::NumChannels; j++) {
-      channels[j][i + offset] += sample;
+
+    switch (ch) {
+      case Channel::ALL:
+        channels[0][i + offset] += sample;
+        channels[1][i + offset] += sample;
+      break;
+      case Channel::LEFT:
+        channels[0][i + offset] += sample;
+      break;
+      case Channel::RIGHT:
+        channels[1][i + offset] += sample;
+      break;
+      default:
+      break;
     }
   }
 }

@@ -5,6 +5,7 @@
 #include "wav.h"
 #include "note.h"
 #include "frequencies.h"
+#include "util.h"
 
 int main() {
 
@@ -17,11 +18,6 @@ int main() {
   //}
   auto n = Sounds::Note(D3, 3).set_volume(5000).gate(0.9);
   f.add_note(n, 0);
-  n = Sounds::Note(D3 * 2, 3).set_volume(3000);
-  f.add_note(n, 0);
-  n = Sounds::Note(D3 * 3, 3).set_volume(1000);
-  f.add_note(n, 0);
-
 
   f.write_file();
 

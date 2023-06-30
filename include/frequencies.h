@@ -151,10 +151,10 @@
 #define B8   7902
 
 // Note macros for the lazy
-#define WHOLE                1
-#define HALF               0.5
-#define QUATER            0.25
-#define EIGHTH           0.125
-#define SIXTEENTH       0.0625
-#define THIRTY_SECOND  0.03125
-#define SIXTY_FOURTH  0.015625
+#define N1 1
+#define N2 0.5
+#define N4 0.25
+#define N8 0.125
+#define N16 0.0625
+#define N32 0.03125
+#define N64 0.015625

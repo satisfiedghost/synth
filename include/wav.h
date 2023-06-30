@@ -4,6 +4,7 @@
 #include "settings.h"
 #include "note.h"
 #include <iostream>
+#include "util.h"
 
 typedef struct wav_headers {
   const char ckID[4];
@@ -67,7 +68,7 @@ public:
     void write_file() const;
     // TODO add time
     void add_tone(Sounds::Tone& tone);
-    void add_note(Sounds::Note& note, float start_time_s);
+    void add_note(Sounds::Note& note, float start_time_s, Channel ch = Channel::ALL);
 
 private:
   wav_headers headers;
