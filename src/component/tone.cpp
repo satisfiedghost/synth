@@ -59,6 +59,12 @@ int16_t Sounds::Tone::get_sample() {
     }
   }
 
+  if (should_noise) {
+    double number = dist(generator);
+    double noise = sample_amplitude * number * m_noise_percent;
+    sample += static_cast<int16_t>(noise);
+  }
+
   if (should_gate) {
     if (std::abs(sample) > sample_amplitude * m_gate_percent) {
       sample *= m_gate_percent;
@@ -76,4 +82,9 @@ void Sounds::Tone::set_slide_function(double fx) {
 
 void Sounds::Tone::set_phase(double phase_rad) {
   m_phase_abs = phase_rad;
+}
+
+void Sounds::Tone::noise(double noise_perecent) {
+  should_noise = true;
+  m_noise_percent = noise_perecent;
 }

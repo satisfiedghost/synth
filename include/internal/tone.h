@@ -2,8 +2,12 @@
 #include <cstddef>
 #include <cstdint>
 #include <vector>
+#include <random>
 
 namespace Sounds {
+
+static std::random_device rd;
+
 class Tone {
 public:
   // TODO - support other ctors
@@ -19,12 +23,17 @@ public:
     , m_current_step(0)
     , m_phase_rel(0)
     , m_phase_abs(0)
+    , should_noise(false)
+    , m_noise_percent(0)
+    , generator(rd())
+    , dist(-1, 1)
     {}
 
   void set_volume(uint16_t volume);
   void gate(float percent);
   void set_slide_function(double fx);
   void set_phase(double phase_rad);
+  void noise(double noise_percent);
 
   // get a sample from the tone
   // increments an internal counter per the global sample rate
@@ -66,5 +75,12 @@ private:
 
   double m_phase_rel;
   double m_phase_abs;
+
+  // noise
+  bool should_noise;
+  double m_noise_percent;
+
+  std::default_random_engine generator;
+  std::uniform_real_distribution<double> dist;
 };
 } // Sounds

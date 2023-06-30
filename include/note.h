@@ -17,6 +17,7 @@ class Note {
     Note& set_volume(uint16_t volume);
     Note& set_phase(double phase_deg);
     Note& gate(double gate_percent);
+    Note& noise(double noise_percent);
 
     float get_length_s() const { return m_length_s; };
     int16_t get_sample() { return m_tone.get_sample(); };

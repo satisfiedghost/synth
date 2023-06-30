@@ -34,3 +34,9 @@ Sounds::Note& Sounds::Note::gate(double gate_percent) {
 
   return *this;
 }
+
+Sounds::Note& Sounds::Note::noise(double noise_percent) {
+  m_tone.noise(noise_percent);
+
+  return *this;
+}

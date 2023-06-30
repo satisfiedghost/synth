@@ -16,7 +16,7 @@ int main() {
     //auto n = Sounds::Note(D3, 10 - i).set_volume(5000).slide(B0);
     //f.add_note(n, i);
   //}
-  auto n = Sounds::Note(D3, 3).set_volume(5000).gate(0.9);
+  auto n = Sounds::Note(D3, 3).set_volume(5000).gate(0.9).noise(0.03);
   f.add_note(n, 0);
 
   f.write_file();
